@@ -28,7 +28,13 @@ const SignUp = () => {
   const onSignUpPress = async () => {
     if (!isLoaded) return;
     try {
+      if (!form.email || !form.password || !form.name) {
+        Alert.alert("Error", "Please fill in all required fields");
+        return;
+      }
+
       await signUp.create({
+        username: form.name,
         emailAddress: form.email,
         password: form.password,
       });
@@ -74,6 +80,7 @@ const SignUp = () => {
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
+      console.error("Verification Error:", JSON.stringify(err, null, 2));
       setVerification({
         ...verification,
         error: err.errors[0].longMessage,

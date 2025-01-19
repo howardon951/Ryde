@@ -4,7 +4,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
-import { LogBox } from "react-native";
+// import { LogBox } from "react-native";
 
 import { tokenCache } from "@/lib/auth";
 
@@ -19,7 +19,7 @@ if (!publishableKey) {
   );
 }
 
-LogBox.ignoreLogs(["Clerk:"]);
+// LogBox.ignoreLogs(["Clerk:"]);
 
 export default function RootLayout() {
   const [loaded] = useFonts({
